@@ -21,6 +21,12 @@ class Login extends React.Component {
         this.setState({ [name]: value });
     };
 
+    handleKeyPress = (event) => {
+        if (event.key === 'Enter') {
+            this.handleSubmit();
+        }
+    };
+
     handleSubmit = () => {
         this.setState({wrongCredentials:false});
         const { username, password } = this.state;
@@ -31,8 +37,8 @@ class Login extends React.Component {
                     history.push('/');
                 },
                 error => {
+                    // handle other errors when moving to real BE
                     this.setState({wrongCredentials:true});
-                    console.log(error);
                 }
             );
         }
@@ -43,7 +49,7 @@ class Login extends React.Component {
         return (
             <div className={cssClasses.Login}>
                 <h1>Login</h1>
-                <div className={cssClasses.textFields}>
+                <div className={cssClasses.textFields} onKeyPress={this.handleKeyPress}>
                     <TextField
                         name="username"
                         hintText="Enter your Username"
