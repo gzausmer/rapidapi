@@ -1,0 +1,23 @@
+.HomePage {
+
+}
+
+.canvas {
+    position: absolute;
+}
+
+.userThumbnail {
+    position: fixed;
+
+}
+
+.userThumbnailImg {
+    width: 200px;
+    height: 200px;
+}
+
+.logout {
+    margin-left: auto;
+    width: 142px;
+    display: block !important;
+}

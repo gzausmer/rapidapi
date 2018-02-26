@@ -1,0 +1,23 @@
+.Login {
+    position: relative;
+    top: 270px;
+    width: 50%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.textFields {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    text-align: center;
+    color: #283044b5;
+}
+
+p {
+    color: #FF4081;
+}
