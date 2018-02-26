@@ -8,7 +8,7 @@
 
 .userThumbnail {
     position: fixed;
-
+    cursor: grab;
 }
 
 .userThumbnailImg {

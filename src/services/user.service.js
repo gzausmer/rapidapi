@@ -1,4 +1,4 @@
-    import thumbnail from '../components/HomePage/userThumbnail.svg'
+    import thumbnail from '../components/HomePage/userThumbnail.png'
     import {history} from "../router/history"
 
     class UserService {

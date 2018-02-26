@@ -28,11 +28,11 @@ class HomePage extends React.Component {
         )
     };
 
-    logoutHandler(user) {
+    logoutHandler = (user) => {
         const position = {top:this.element.offsetTop, left: this.element.offsetLeft};
         const modifiedUser = Object.assign({}, user, {position});
         userService.logout(modifiedUser);
-    }
+    };
 
     componentDidMount() {
 
