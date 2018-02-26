@@ -18,6 +18,6 @@ This app uses the following tech:
 
 3) Open chrome on http://localhost:3000/
 
-4) Login with username: 'rapid', password: 'pass'
+4) Login with username: 'rapidapi', password: 'pass'
 
 5) Enjoy!  
