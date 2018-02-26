@@ -1,8 +1,21 @@
-Clone
+# Drag and Drop your thumbnail
 
-npm i
+Just drag and drop it and we'll remember where you placed it.. 
 
-npm start
+This app uses the following tech:
 
+[React](https://reactjs.org/)
+[Webpack](https://webpack.js.org/)
+[CSS Modules](https://github.com/css-modules/css-modules)
 
-Username: rapidapi  Password: pass
+### Instructions:
+
+1) Clone repo and `npm install`
+
+2) `npm start`  
+
+3) Open chrome on http://localhost:3000/
+
+4) Login with username: 'rapid', password: 'pass'
+
+5) Enjoy!  
