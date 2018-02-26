@@ -1,11 +1,13 @@
 # Drag and Drop your thumbnail
 
-Just drag and drop it and we'll remember where you placed it.. 
+Just drag and drop it and it'll remember where you placed it..
 
 This app uses the following tech:
 
 [React](https://reactjs.org/)
+
 [Webpack](https://webpack.js.org/)
+
 [CSS Modules](https://github.com/css-modules/css-modules)
 
 ### Instructions:
