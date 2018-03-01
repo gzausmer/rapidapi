@@ -34,6 +34,4 @@ export const dragElement = (elmnt, callback, canvas, context) => {
         callback();
     };
     elmnt.onmousedown = dragMouseDown;
-
-
 };

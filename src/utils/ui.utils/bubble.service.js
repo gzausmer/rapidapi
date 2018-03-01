@@ -5,11 +5,7 @@ class BubbleService {
     this.animationId = null;
     }
 
-    push(bubble) {
-        this.arr.push(bubble);
-    }
-
-    get() {
+    getBubbleArr() {
         return this.arr;
     }
 

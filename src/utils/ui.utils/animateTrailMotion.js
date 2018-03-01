@@ -3,9 +3,9 @@ import {bubbleService} from "./bubble.service"
 
 export const animateTrailMotion = (xPos, yPos, canvas, context) => {
 
+    let globalArr = bubbleService.getBubbleArr();
     const randomAmountBubbles = 2;
     const maxBubbles = 100;
-    let globalArr = bubbleService.get();
 
     // create array of random bubbles
     for (let i = 0; i < randomAmountBubbles; i++) {
@@ -21,10 +21,12 @@ export const animateTrailMotion = (xPos, yPos, canvas, context) => {
 
     function animate() {
         context.clearRect(0, 0, canvas.width, canvas.height);
-        let globalID = requestAnimationFrame(animate);
-        bubbleService.setAnimationID(globalID);
-            globalArr.forEach(bubble => bubble.update());
+        // start requestAnimationFrame - store id in variable in order to stop loop.
+        let animationId = requestAnimationFrame(animate);
+        bubbleService.setAnimationID(animationId);
+        globalArr.forEach(bubble => bubble.update());
     }
+    // protect from multiple initialisations of requestAnimationFrame:
     if(!bubbleService.getAnimationId()) {
         animate();
     }

@@ -18,7 +18,6 @@
                     if (!response.ok) {
                         return Promise.reject(response.statusText);
                     }
-
                     return response.json();
                 })
                 .then(user => {
@@ -28,7 +27,6 @@
                     return user;
                 });
         };
-
 
         persistUserPosition(localUser) {
             const foundIndex = this.users.findIndex(user => user.id === localUser.id);
@@ -55,7 +53,6 @@
             this.users.push(mockUser);
             localStorage.setItem('users', JSON.stringify(this.users));
         };
-
     }
 
     export const userService = new UserService();

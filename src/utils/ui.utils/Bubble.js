@@ -7,18 +7,17 @@ class Bubble {
         this.context = context;
         this.radius = radius;
         this.angle = 0;
-        this.colorArr = ['#1A4271','#386FA4', '#59A5D8', '#84D2F6', '#91E5F6'];
         this.initColor();
     }
 
     initColor() {
-      const idx = Math.floor(Math.random() * 5);
-      this.color = this.colorArr[idx];
+        const colorArr = ['#1A4271','#386FA4', '#59A5D8', '#84D2F6', '#91E5F6'];
+        const idx = Math.floor(Math.random() * 5);
+        this.color = colorArr[idx];
     }
 
     draw() {
         this.context.beginPath();
-
         this.context.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, true);
         this.context.fillStyle = this.color;
         this.context.globalAlpha = this.alpha;
