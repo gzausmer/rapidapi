@@ -1,6 +1,6 @@
-# Drag and Drop your thumbnail
+# Drag and Drop your user thumbnail
 
-Just drag and drop it and it'll remember where you placed it..
+Just drag and drop and it'll remember where you placed it..
 
 This app uses the following tech:
 
@@ -9,6 +9,8 @@ This app uses the following tech:
 [Webpack](https://webpack.js.org/)
 
 [CSS Modules](https://github.com/css-modules/css-modules)
+
+[Canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API)
 
 ### Instructions:
 
