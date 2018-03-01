@@ -33,12 +33,11 @@
         persistUserPosition(localUser) {
             const foundIndex = this.users.findIndex(user => user.id === localUser.id);
             this.users[foundIndex] = Object.assign({}, this.users[foundIndex], localUser);
-
+            localStorage.setItem('user', JSON.stringify(localUser));
             localStorage.setItem('users', JSON.stringify(this.users));
         };
 
-        logout(localUser) {
-            this.persistUserPosition(localUser);
+        logout() {
             localStorage.removeItem('user');
             history.push('/login');
         };
@@ -49,7 +48,7 @@
 
             const mockUser = {
                 id: 1776,
-                username: 'rapidapi',
+                username: 'user',
                 password: 'pass',
                 thumbnail,
             };

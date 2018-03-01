@@ -11,6 +11,8 @@ import notFound from '../src/images/404-header.png';
 
 class App extends Component {
 
+    state = {user: ""};
+
     render() {
 
         return (
@@ -33,7 +35,7 @@ class App extends Component {
     }
 
     renderHomeComponent(props) {
-        props.user = this.user;
+        props.user = this.state.user;
         return guardHomePage(props);
     }
 
@@ -42,7 +44,7 @@ class App extends Component {
     }
 
     onSuccessHandle(user) {
-        this.user = user;
+        this.setState({user});
     }
 }
 

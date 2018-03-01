@@ -1,31 +1,31 @@
-export const animateTrailMotion = (xPos, yPos) => {
+import Bubble from "./Bubble";
+import {bubbleService} from "./bubble.service"
 
-    const canvas = document.querySelector("#myCanvas");
-    const context = canvas.getContext("2d");
-    let alpha = 0.4;
-    function update() {
+export const animateTrailMotion = (xPos, yPos, canvas, context) => {
 
-        alpha = alpha - 0.01;
+    const randomAmountBubbles = 2;
+    const maxBubbles = 100;
+    let globalArr = bubbleService.get();
 
-            context.beginPath();
-            let randX = Math.floor((Math.random() * 20) + 1);
-            let randY = Math.floor((Math.random() * 20) + 1);
+    // create array of random bubbles
+    for (let i = 0; i < randomAmountBubbles; i++) {
+        let randX = Math.floor((Math.random() * 20) + 1);
+        let randY = Math.floor((Math.random() * 20) + 1);
+        let bubble = new Bubble(xPos + randX * 10, yPos + randY * 10, randX, context);
 
-            context.arc(xPos + randX * 10, yPos + randY * 10, randX % 8, 0, 2 * Math.PI, true);
-            context.fillStyle = '#1a4271';
-            context.fill();
-            context.globalAlpha = alpha;
-
-
-        if(alpha > 0.1) {
-            requestAnimationFrame(update);
+        if(globalArr.length > maxBubbles) {
+            globalArr.shift();
         }
-
-        else {
-            context.clearRect(0, 0, canvas.width, canvas.height)
-
-        }
+        globalArr.push(bubble);
     }
 
-    update();
+    function animate() {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        let globalID = requestAnimationFrame(animate);
+        bubbleService.setAnimationID(globalID);
+            globalArr.forEach(bubble => bubble.update());
+    }
+    if(!bubbleService.getAnimationId()) {
+        animate();
+    }
 };

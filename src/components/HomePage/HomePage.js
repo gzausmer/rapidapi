@@ -1,15 +1,17 @@
 import React from 'react';
 import cssClasses from './HomePage.css'
 import {userService} from '../../services/user.service'
-import {dragElement} from "../../utils/ui.utils/drag-service";
+import {dragElement} from "../../utils/ui.utils/drag.service";
 import thumbnail from "./userThumbnail.png"
 import {RaisedButton} from "material-ui";
+import {Component} from 'react';
+import {bubbleService} from "../../utils/ui.utils/bubble.service";
 
-class HomePage extends React.Component {
+class HomePage extends Component {
 
     constructor(props) {
         super(props);
-        this.user = this.props.user;
+        this.user = this.props.user || JSON.parse(localStorage.getItem('user'));
     }
 
     render() {
@@ -18,7 +20,7 @@ class HomePage extends React.Component {
         return (
             <div className={ cssClasses.HomePage }>
                 <canvas className={ cssClasses.canvas } id="myCanvas" width="1680" height="957"/>
-                <RaisedButton className={ cssClasses.logout } label="Logout" secondary={true} onClick={() => this.logoutHandler(this.user)}/>
+                <RaisedButton className={ cssClasses.logout } label="Logout" secondary={true} onClick={() => this.logoutHandler()}/>
             <h1>Hi {username}!</h1>
 
                 <div ref={el => this.element = el} className={ cssClasses.userThumbnail}>
@@ -28,10 +30,15 @@ class HomePage extends React.Component {
         )
     };
 
-    logoutHandler = (user) => {
+    logoutHandler = () => {
+        bubbleService.stopAnimation();
+        userService.logout();
+    };
+
+    setUserPosition = () => {
         const position = {top:this.element.offsetTop, left: this.element.offsetLeft};
-        const modifiedUser = Object.assign({}, user, {position});
-        userService.logout(modifiedUser);
+        const modifiedUser = Object.assign({}, this.user, {position});
+        userService.persistUserPosition(modifiedUser);
     };
 
     componentDidMount() {
@@ -40,7 +47,9 @@ class HomePage extends React.Component {
             this.element.style.top = this.user.position.top+'px';
             this.element.style.left = this.user.position.left+'px';
         }
-        dragElement(this.element);
+        const canvas = document.querySelector("#myCanvas");
+        const context = canvas.getContext("2d");
+        dragElement(this.element, this.setUserPosition, canvas, context);
     }
 }
 

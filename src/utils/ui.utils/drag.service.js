@@ -1,6 +1,6 @@
 import {animateTrailMotion} from "./animateTrailMotion";
 
-export const dragElement = (elmnt) => {
+export const dragElement = (elmnt, callback, canvas, context) => {
     let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
 
     const dragMouseDown = (e) => {
@@ -24,13 +24,14 @@ export const dragElement = (elmnt) => {
         // set the element's new position:
         elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
         elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-        animateTrailMotion(elmnt.offsetLeft - pos1, elmnt.offsetTop - pos2)
+        animateTrailMotion(elmnt.offsetLeft - pos1, elmnt.offsetTop - pos2, canvas, context)
     };
 
     const closeDragElement = () => {
         /* stop moving when mouse button is released:*/
         document.onmouseup = null;
         document.onmousemove = null;
+        callback();
     };
     elmnt.onmousedown = dragMouseDown;
 

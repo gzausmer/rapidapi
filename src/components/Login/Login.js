@@ -6,15 +6,11 @@ import {history} from "../../router/history"
 
 class Login extends React.Component {
 
-    constructor(props) {
-
-        super(props);
-        this.state = {
+    state = {
             username:'',
             password:'',
         };
 
-    }
     render() {
         const {wrongCredentials} = this.state;
         return (
