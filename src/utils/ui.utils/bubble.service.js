@@ -19,6 +19,7 @@ class BubbleService {
 
     stopAnimation() {
         cancelAnimationFrame(this.animationId);
+        this.setAnimationID(null);
         this.arr = [];
     }
 }
